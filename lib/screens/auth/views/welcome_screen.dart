@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:firebase_tinder/blocs/authentication_bloc/authentication_bloc.dart';
-import 'package:firebase_tinder/blocs/sign_in_bloc/sign_in_bloc.dart';
-import 'package:firebase_tinder/blocs/sign_up_bloc/sign_up_bloc.dart';
-import 'package:firebase_tinder/screens/auth/sign_in_screen.dart';
-import 'package:firebase_tinder/screens/auth/sign_up_screen.dart';
+import 'package:firebase_tinder/screens/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:firebase_tinder/screens/auth/blocs/sign_up_bloc/sign_up_bloc.dart';
+import 'package:firebase_tinder/screens/auth/views/sign_in_screen.dart';
+import 'package:firebase_tinder/screens/auth/views/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

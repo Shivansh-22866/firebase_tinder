@@ -1,5 +1,5 @@
-import 'package:firebase_tinder/blocs/sign_in_bloc/sign_in_bloc.dart';
-import 'package:firebase_tinder/screens/auth/components/custom_textfield.dart';
+import 'package:firebase_tinder/screens/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:firebase_tinder/components/custom_textfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

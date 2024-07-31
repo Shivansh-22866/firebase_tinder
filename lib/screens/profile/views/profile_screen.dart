@@ -2,15 +2,15 @@ import 'package:firebase_tinder/screens/auth/blocs/sign_in_bloc/sign_in_bloc.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 			appBar: AppBar(
 				title: const Text(
-					'Welcome, you are In !'
+					'Profile'
 				),
 				actions: [
 					IconButton(

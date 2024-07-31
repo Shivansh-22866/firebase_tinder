@@ -1,10 +1,10 @@
-import 'package:firebase_tinder/screens/auth/components/custom_textfield.dart';
+import 'package:firebase_tinder/components/custom_textfield.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_repository/user_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../blocs/sign_up_bloc/sign_up_bloc.dart';
+import '../blocs/sign_up_bloc/sign_up_bloc.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
