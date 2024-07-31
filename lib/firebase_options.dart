@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDhkSdEF2Bnfm6rwiak3uBHNWexHRwatAc',
-    appId: '1:702190229517:android:6ec737c5fccd98a893dd44',
-    messagingSenderId: '702190229517',
-    projectId: 'fir-tinder-6bc18',
-    storageBucket: 'fir-tinder-6bc18.appspot.com',
+    apiKey: 'apikey',
+    appId: 'appId',
+    messagingSenderId: 'messagingSenderId',
+    projectId: 'fir-tinder',
+    storageBucket: 'fir-tinder',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCgkk1x6V5M7qxiiSrPU7nCD3rmIiJcRkc',
-    appId: '1:702190229517:ios:99efccf3b7e425c793dd44',
-    messagingSenderId: '702190229517',
-    projectId: 'fir-tinder-6bc18',
-    storageBucket: 'fir-tinder-6bc18.appspot.com',
+    apiKey: 'apiKey',
+    appId: 'appId',
+    messagingSenderId: 'messagingSenderId',
+    projectId: 'fir-tinder',
+    storageBucket: 'fir-tinder',
     iosBundleId: 'com.example.firebaseTinder',
   );
 }
