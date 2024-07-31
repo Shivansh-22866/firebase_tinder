@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "702190229517",
+    "project_id": "fir-tinder-6bc18",
+    "storage_bucket": "fir-tinder-6bc18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702190229517:android:6ec737c5fccd98a893dd44",
+        "android_client_info": {
+          "package_name": "com.example.firebase_tinder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhkSdEF2Bnfm6rwiak3uBHNWexHRwatAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
