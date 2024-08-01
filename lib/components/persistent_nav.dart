@@ -1,6 +1,6 @@
 import 'package:firebase_tinder/blocs/authentication_bloc/authentication_bloc.dart';
 import 'package:firebase_tinder/screens/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
-import 'package:firebase_tinder/screens/home/home_screen.dart';
+import 'package:firebase_tinder/screens/home/views/home_screen.dart';
 import 'package:firebase_tinder/screens/profile/views/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
