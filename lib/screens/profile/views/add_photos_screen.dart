@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -12,6 +14,47 @@ class AddPhotoScreen extends StatefulWidget {
 
 class _AddPhotoScreenState extends State<AddPhotoScreen> {
   List<String> images = [];
+
+  Future<void> _pickImageAndCrop(ImageSource src) async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(
+      source: src,
+      imageQuality: 80,
+    );
+
+    if (image != null && mounted) {
+      // Use ImageCropper to crop the image
+      try {
+        CroppedFile? croppedFile = await ImageCropper().cropImage(
+          sourcePath: image.path,
+          aspectRatio: const CropAspectRatio(ratioX: 9, ratioY: 16),
+          uiSettings: [
+            AndroidUiSettings(
+              toolbarTitle: 'Cropper',
+              toolbarColor: Theme.of(context).colorScheme.primary,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false,
+            ),
+            IOSUiSettings(
+              title: 'Cropper',
+            )
+          ],
+        );
+
+        if (croppedFile != null && mounted) {
+          setState(() {
+            images.add(croppedFile.path);
+          });
+          Navigator.pop(context, images);
+        }
+      } catch (e) {
+        log('Error cropping image: $e');
+        // Handle error, e.g., show a snackbar or alert dialog
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +72,7 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -37,54 +80,18 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
             children: [
               const Text(
                 "Create New",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               const Text(
                 "Select a content type",
-                style: TextStyle(
-                  fontWeight: FontWeight.w300,
-                ),
+                style: TextStyle(fontWeight: FontWeight.w300),
               ),
               Expanded(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: () async {
-                      final ImagePicker picker = ImagePicker();
-                      final dynamic image = await picker.pickImage(
-                          source: ImageSource.gallery);
-
-                      if (image != null && mounted) {
-                        CroppedFile? croppedFile =
-                            await ImageCropper().cropImage(
-                          uiSettings: [
-                            AndroidUiSettings(
-                              toolbarTitle: "Cropper",
-                              toolbarColor:
-                                  Theme.of(context).colorScheme.primary,
-                              toolbarWidgetColor: Colors.white,
-                              initAspectRatio: CropAspectRatioPreset.original,
-                              lockAspectRatio: false,
-                            ),
-                            IOSUiSettings(title: "Cropper")
-                          ],
-                          sourcePath: image.path,
-                          aspectRatio:
-                              const CropAspectRatio(ratioX: 9, ratioY: 16),
-                        );
-
-                        if (croppedFile != null && mounted) {
-                          setState(() {
-                            images.add(croppedFile.path);
-                          });
-                          Navigator.pop(context, images);
-                        }
-                      }
-                    },
+                    onTap: () => _pickImageAndCrop(ImageSource.gallery),
                     child: Container(
                       width: double.infinity,
                       height: 120,
@@ -106,11 +113,11 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
                                   fontWeight: FontWeight.w500),
                             ),
                             Text(
-                              "Gallery",
+                              "Photo",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 32),
+                                  fontSize: 30),
                             )
                           ],
                         ),
@@ -120,37 +127,40 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: 120,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: const DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage("assets/camera.png"))),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 40),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Capture from",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          Text(
-                            "Camera",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 32),
-                          )
-                        ],
+                  GestureDetector(
+                    onTap: () => _pickImageAndCrop(ImageSource.camera),
+                    child: Container(
+                      width: double.infinity,
+                      height: 120,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: const DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/camera.png"))),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 40),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Capture from",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Text(
+                              "Camera",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30),
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ))
             ],
