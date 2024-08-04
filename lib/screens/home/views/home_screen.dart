@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: Hero(
-                  tag: "ImageTag$index",
+                  tag: "imageTag$index",
                   child: Stack(
                     children: [
                       Container(
@@ -238,11 +238,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                   IconButton(
                                       onPressed: () {
                                         PersistentNavBarNavigator.pushNewScreen(
-                                          context,
-                                          pageTransitionAnimation: PageTransitionAnimation.slideUp,
-                                          withNavBar: false,
-                                          screen: OtherProfileDetailsScreen(index)
-                                        );
+                                            context,
+                                            pageTransitionAnimation:
+                                                PageTransitionAnimation.slideUp,
+                                            withNavBar: false,
+                                            screen: OtherProfileDetailsScreen(
+                                                index));
                                       },
                                       icon: const Icon(
                                         CupertinoIcons.info_circle_fill,
