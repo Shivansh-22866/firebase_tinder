@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:firebase_tinder/screens/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:firebase_tinder/screens/profile/views/add_photos_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -167,6 +168,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       );
                     }),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  'About Me',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10,),
+              Container(
+                color: Colors.white,
+                child: TextFormField(
+                  maxLines: 10,
+                  minLines: 1,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    hintText: "About Me",
+                    border: InputBorder.none
+                  ),
+                ),
               )
             ],
           ),
