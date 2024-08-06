@@ -69,9 +69,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 child: Container(),
               ),
               Align(
-                alignment: Alignment.bottomCenter,
+                alignment: Alignment.center,
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 1.8,
+                  height: MediaQuery.of(context).size.height / 1.6,
                   child: Column(
                     children: [
                       Padding(
@@ -115,7 +115,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                             ),
                             BlocProvider<SignUpBloc>(
                               create: (context) => SignUpBloc(
-                                userRepository: context.read<AuthenticationBloc>().userRepository,
+                                userRepository: context
+                                    .read<AuthenticationBloc>()
+                                    .userRepository,
                               ),
                               child: const SignUpScreen(),
                             ),

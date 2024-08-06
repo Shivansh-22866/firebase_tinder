@@ -3,9 +3,6 @@ import 'package:firebase_tinder/components/persistent_nav.dart';
 import 'package:firebase_tinder/screens/auth/views/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'screens/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
-import 'screens/home/views/home_screen.dart';
-
 class MyAppView extends StatelessWidget {
   const MyAppView({super.key});
 
